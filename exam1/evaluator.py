@@ -11,6 +11,8 @@ def find_lowest_value(list_in: List[N]) -> N:
     :param list_in: A list of numbers (integers and/or floats)
     :return: The lowest number in the list
     """
+
+    return sorted(list_in)[0]
     pass  # implement me
 
 
@@ -21,6 +23,7 @@ def find_highest_value(list_in: List[N]) -> N:
     :param list_in: A list of numbers (integers and/or floats)
     :return: The highest number in the list
     """
+    return max(list_in)
     pass  # implement me
 
 
@@ -34,6 +37,10 @@ def find_value(value_to_find, values: C) -> int:
     :param values: A List or a Set.
     :return: an integer. Either the index where the value exists or -1
     """
+    for i in range(0, len(values) - 1):
+        if values[i] == value_to_find:
+            return i
+    return -1
     pass  # implement me
 
 
@@ -49,6 +56,12 @@ def compare_two_numbers(a: N, b: N) -> int:
     :param b: The second number.
     :return: an integer 0, 1, or -1
     """
+    if a==b:
+        return 0
+    elif a>b:
+        return 1
+    elif b>a:
+        return -1
     pass  # implement me
 
 
@@ -64,6 +77,9 @@ def compare_two_strings(a: str, b: str) -> int:
     :param b: The second string.
     :return: an integer 0, 1, or -1
     """
+    alen = len(a)
+    blen =len(b)
+    return compare_two_numbers(alen,blen)
     pass  # implement me
 
 
@@ -75,6 +91,13 @@ def find_common(tuple_a: Tuple, tuple_b: Tuple) -> Set:
     :param tuple_b: The second tuple.
     :return: A set containing items common on both tuples.
     """
+    result = []
+    for i in tuple_a:
+        for j in tuple_b:
+            if i==j:
+                result.append(i)
+
+    return set(result)
     pass  # implement me
 
 
@@ -85,4 +108,10 @@ def find_duplicates(tuple_in: Tuple) -> List:
     :param tuple_in: A tuple
     :return: a A list containing duplicate items in the tuple_in parameter
     """
+    temp = set()
+    for i in tuple_in:
+        if tuple_in.count(i)>=2:
+            temp.add(i)
+
+    return sorted(list(temp))
     pass  # implement me
